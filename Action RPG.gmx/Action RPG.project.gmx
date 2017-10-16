@@ -9,9 +9,17 @@
     <sprite>sprites\s_player_run_right</sprite>
     <sprite>sprites\s_player_run_down</sprite>
     <sprite>sprites\s_player_run_up</sprite>
+    <sprite>sprites\s_soild</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\o_player</object>
+    <object>objects\o_solid</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\r_base</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
