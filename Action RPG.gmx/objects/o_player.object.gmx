@@ -6,8 +6,31 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>&lt;undefined&gt;</maskName>
+  <maskName>s_player_run_down</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>image_speed = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,17 +48,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check(vk_right) and not place_meeting(x+4, y, o_solid) {
-    x += 4;
+            <string>image_speed = 0;
+
+if keyboard_check(vk_right) and not place_meeting(x+4, y, o_solid) {
+    x += 2;
+    sprite_index = s_player_run_right;
+    image_speed = 0.2;
+    image_xscale = 1;
 }
 if keyboard_check(vk_left) and not place_meeting(x-4, y, o_solid) {
-    x -= 4;
+    x -= 2;
+    sprite_index = s_player_run_right;
+    image_speed = 0.2;
+    image_xscale = -1;
 }
 if keyboard_check(vk_up) and not place_meeting(x, y-4, o_solid) {
-    y -= 4;
+    y -= 2;
+    sprite_index = s_player_run_up;
+    image_speed = 0.2;
 }
 if keyboard_check(vk_down) and not place_meeting(x, y+4, o_solid) {
-    y += 4;
+    y += 2;
+    sprite_index = s_player_run_down;
+    image_speed = 0.2;
 }
 </string>
           </argument>
