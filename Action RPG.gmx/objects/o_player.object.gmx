@@ -25,9 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
-speed_ = 2;
+            <string>initialize_movement_entity(0.5, 1, o_solid);
+image_speed = 0;
+acceleration_ = 0.5;
+max_speed_ = 1.5;
 direction_facing_ = dir.right;
+direction_ = 0;
 global.player_health = 4;
 
 enum player{
@@ -69,33 +72,25 @@ sprite_[player.move, dir.down] = s_player_run_down;
           <argument>
             <kind>1</kind>
             <string>image_speed = 0;
-var _animation_speed = 0.2;
+var _x_input = keyboard_check(vk_right) - keyboard_check(vk_left);
+var _y_input = keyboard_check(vk_down) - keyboard_check(vk_up);
+var _input_direction = point_direction(0, 0, _x_input, _y_input);
 
-
-if keyboard_check(vk_right) and not place_meeting(x+speed_, y, o_solid) {
-    x += speed_;
-    direction_facing_ = dir.right;
-    image_speed = _animation_speed;
-    image_xscale = 1;
-}
-if keyboard_check(vk_left) and not place_meeting(x-speed_, y, o_solid) {
-    x -= speed_;
-    direction_facing_ = dir.left;
-    image_speed = _animation_speed;
-    image_xscale = -1;
-}
-if keyboard_check(vk_up) and not place_meeting(x, y-speed_, o_solid) {
-    y -= speed_;
-    direction_facing_ = dir.up;
-    image_speed = _animation_speed;
-}
-if keyboard_check(vk_down) and not place_meeting(x, y+speed_, o_solid) {
-    y += speed_;
-    direction_facing_ = dir.down;
-    image_speed = _animation_speed;
+if _x_input == 0 and _y_input == 0 {
+    image_index = 0;
+    image_speed = 0;
+    apply_friction_to_movement_entity();
+} else {
+    image_speed = 0.2;
+    if _x_input != 0 {
+        image_xscale = _x_input;
+    }
+    get_direction_facing(_input_direction);
+    add_movement_maxspeed(_input_direction, acceleration_, max_speed_);
 }
 
 sprite_index = sprite_[player.move, direction_facing_];
+move_movement_entity(false);
 </string>
           </argument>
         </arguments>

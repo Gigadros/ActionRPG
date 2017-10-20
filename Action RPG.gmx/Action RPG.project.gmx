@@ -13,6 +13,17 @@
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <scripts name="Movement Scripts">
+      <script>scripts\initialize_movement_entity.gml</script>
+      <script>scripts\add_movement_maxspeed.gml</script>
+      <script>scripts\apply_friction_to_movement_entity.gml</script>
+      <script>scripts\move_movement_entity.gml</script>
+      <script>scripts\set_movement.gml</script>
+    </scripts>
+    <script>scripts\get_direction_facing.gml</script>
+    <script>scripts\approach.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\o_player</object>
     <object>objects\o_solid</object>
