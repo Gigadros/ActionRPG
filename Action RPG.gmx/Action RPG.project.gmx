@@ -6,12 +6,18 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\s_player_run_right</sprite>
-    <sprite>sprites\s_player_run_down</sprite>
-    <sprite>sprites\s_player_run_up</sprite>
+    <sprites name="Player Sprites">
+      <sprite>sprites\s_player_run_up</sprite>
+      <sprite>sprites\s_player_run_down</sprite>
+      <sprite>sprites\s_player_run_right</sprite>
+    </sprites>
     <sprite>sprites\s_soild</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\bg_grass</background>
+    <background>background\t_dirtwall</background>
+    <background>background\t_dirtpath</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <scripts name="Movement Scripts">
