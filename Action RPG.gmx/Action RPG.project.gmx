@@ -18,7 +18,12 @@
       <sprite>sprites\s_player_roll_down</sprite>
     </sprites>
     <sprites name="World Sprites">
+      <sprite>sprites\s_grass</sprite>
+    </sprites>
+    <sprites name="Collision Sprites">
       <sprite>sprites\s_soild</sprite>
+      <sprite>sprites\s_bomb_hitbox</sprite>
+      <sprite>sprites\s_sword_hitbox</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -38,10 +43,16 @@
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\approach.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
+    <script>scripts\array.gml</script>
+    <scripts name="Hitbox Scripts">
+      <script>scripts\create_hitbox.gml</script>
+    </scripts>
   </scripts>
   <objects name="objects">
     <object>objects\o_player</object>
     <object>objects\o_solid</object>
+    <object>objects\o_grass</object>
+    <object>objects\o_hitbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_base</room>

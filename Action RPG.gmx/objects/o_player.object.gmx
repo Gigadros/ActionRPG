@@ -89,6 +89,7 @@ sprite_[player.evade, dir.down] = s_player_roll_down;
           <argument>
             <kind>1</kind>
             <string>/// Player Step
+depth = -y;
 event_user(state_);
 sprite_index = sprite_[state_, direction_facing_];
 </string>
@@ -146,6 +147,19 @@ if animation_hit_frame(image_number - 1){
             <kind>1</kind>
             <string>/// Sword State
 image_speed = 0.26;
+
+if animation_hit_frame(1){
+    var _angle = direction_facing_ * 90;
+    var _life = 3;
+    var _damage = 1;
+    var _knockback = 8;
+    var _hitbox = create_hitbox(s_sword_hitbox, x, y, _angle, _life, array(), _damage, _knockback);
+    
+    switch direction_facing_ {
+        case dir.up: _hitbox.y -= 4; break;
+        default: _hitbox.y -= 8; break;
+    }
+}
 
 if animation_hit_frame(image_number - 1){
     state_ = player.move;
