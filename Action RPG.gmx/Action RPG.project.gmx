@@ -7,11 +7,19 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="Player Sprites">
+      <sprite>sprites\s_player_run_right</sprite>
       <sprite>sprites\s_player_run_up</sprite>
       <sprite>sprites\s_player_run_down</sprite>
-      <sprite>sprites\s_player_run_right</sprite>
+      <sprite>sprites\s_player_attack_right</sprite>
+      <sprite>sprites\s_player_attack_up</sprite>
+      <sprite>sprites\s_player_attack_down</sprite>
+      <sprite>sprites\s_player_roll_right</sprite>
+      <sprite>sprites\s_player_roll_up</sprite>
+      <sprite>sprites\s_player_roll_down</sprite>
     </sprites>
-    <sprite>sprites\s_soild</sprite>
+    <sprites name="World Sprites">
+      <sprite>sprites\s_soild</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -29,6 +37,7 @@
     </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\approach.gml</script>
+    <script>scripts\animation_hit_frame.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\o_player</object>

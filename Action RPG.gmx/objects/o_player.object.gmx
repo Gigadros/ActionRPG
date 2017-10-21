@@ -25,16 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>initialize_movement_entity(0.5, 1, o_solid);
+            <string>/// Initialize Player
+initialize_movement_entity(0.5, 1, o_solid);
 image_speed = 0;
 acceleration_ = 0.5;
 max_speed_ = 1.5;
+roll_speed_ = 2;
 direction_facing_ = dir.right;
+roll_direction_ = 0;
 direction_ = 0;
 global.player_health = 4;
 
 enum player{
-    move
+    move,
+    sword,
+    evade
 }
 
 enum dir{
@@ -44,11 +49,23 @@ enum dir{
     down
 }
 
-// Sprite move lookup table
+state_ = player.move;
+
+// Sprite lookup table
 sprite_[player.move, dir.right] = s_player_run_right;
 sprite_[player.move, dir.up] = s_player_run_up;
 sprite_[player.move, dir.left] = s_player_run_right;
 sprite_[player.move, dir.down] = s_player_run_down;
+
+sprite_[player.sword, dir.right] = s_player_attack_right;
+sprite_[player.sword, dir.up] = s_player_attack_up;
+sprite_[player.sword, dir.left] = s_player_attack_right;
+sprite_[player.sword, dir.down] = s_player_attack_down;
+
+sprite_[player.evade, dir.right] = s_player_roll_right;
+sprite_[player.evade, dir.up] = s_player_roll_up;
+sprite_[player.evade, dir.left] = s_player_roll_right;
+sprite_[player.evade, dir.down] = s_player_roll_down;
 </string>
           </argument>
         </arguments>
@@ -71,10 +88,98 @@ sprite_[player.move, dir.down] = s_player_run_down;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 0;
+            <string>/// Player Step
+event_user(state_);
+sprite_index = sprite_[state_, direction_facing_];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Evade State
+image_speed = 0.23;
+
+set_movement(roll_direction_, roll_speed_);
+move_movement_entity(false);
+
+if animation_hit_frame(image_number - 1){
+    state_ = player.move;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Sword State
+image_speed = 0.26;
+
+if animation_hit_frame(image_number - 1){
+    state_ = player.move;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Move State
+image_speed = 0;
 var _x_input = keyboard_check(vk_right) - keyboard_check(vk_left);
 var _y_input = keyboard_check(vk_down) - keyboard_check(vk_up);
 var _input_direction = point_direction(0, 0, _x_input, _y_input);
+var _attack_input = keyboard_check_pressed(ord("X"));
+var _roll_input = keyboard_check_pressed(ord("Z"));
+roll_direction_ = direction_facing_ * 90;
 
 if _x_input == 0 and _y_input == 0 {
     image_index = 0;
@@ -87,9 +192,18 @@ if _x_input == 0 and _y_input == 0 {
     }
     get_direction_facing(_input_direction);
     add_movement_maxspeed(_input_direction, acceleration_, max_speed_);
+    roll_direction_ = _input_direction;
 }
 
-sprite_index = sprite_[player.move, direction_facing_];
+if _attack_input == true {
+    image_index = 0;
+    state_ = player.sword;
+}
+if _roll_input == true {
+    image_index = 0;
+    state_ = player.evade;
+}
+
 move_movement_entity(false);
 </string>
           </argument>
