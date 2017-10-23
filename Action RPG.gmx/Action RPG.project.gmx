@@ -24,6 +24,11 @@
       <sprite>sprites\s_soild</sprite>
       <sprite>sprites\s_bomb_hitbox</sprite>
       <sprite>sprites\s_sword_hitbox</sprite>
+      <sprite>sprites\s_porcupine_hitbox</sprite>
+    </sprites>
+    <sprites name="Enemy Sprites">
+      <sprite>sprites\s_porcupine_run</sprite>
+      <sprite>sprites\s_porcupine_attack</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -40,19 +45,24 @@
       <script>scripts\move_movement_entity.gml</script>
       <script>scripts\set_movement.gml</script>
     </scripts>
+    <scripts name="Hitbox Scripts">
+      <script>scripts\create_hitbox.gml</script>
+    </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\approach.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
     <script>scripts\array.gml</script>
-    <scripts name="Hitbox Scripts">
-      <script>scripts\create_hitbox.gml</script>
-    </scripts>
+    <script>scripts\porcupine_attack.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\o_player</object>
     <object>objects\o_solid</object>
     <object>objects\o_grass</object>
     <object>objects\o_hitbox</object>
+    <objects name="Enemies">
+      <object>objects\o_enemy</object>
+      <object>objects\o_porcupine</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_base</room>
