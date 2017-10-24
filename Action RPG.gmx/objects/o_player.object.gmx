@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Initialize Player
 initialize_movement_entity(0.5, 1, o_solid);
+initialize_hurtbox_entity();
 image_speed = 0;
 acceleration_ = 0.5;
 max_speed_ = 1.5;
@@ -97,6 +98,32 @@ sprite_index = sprite_[state_, direction_facing_];
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="o_hitbox">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Hit logic
+if hurtbox_entity_can_be_hit_by(other){
+    instance_destroy();
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -153,7 +180,7 @@ if animation_hit_frame(1){
     var _life = 3;
     var _damage = 1;
     var _knockback = 8;
-    var _hitbox = create_hitbox(s_sword_hitbox, x, y, _angle, _life, array(), _damage, _knockback);
+    var _hitbox = create_hitbox(s_sword_hitbox, x, y, _angle, _life, array(o_enemy, o_grass), _damage, _knockback);
     
     switch direction_facing_ {
         case dir.up: _hitbox.y -= 4; break;

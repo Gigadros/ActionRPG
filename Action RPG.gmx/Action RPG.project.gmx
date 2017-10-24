@@ -47,6 +47,11 @@
     </scripts>
     <scripts name="Hitbox Scripts">
       <script>scripts\create_hitbox.gml</script>
+      <script>scripts\is_target.gml</script>
+    </scripts>
+    <scripts name="Hurtbox Scripts">
+      <script>scripts\initialize_hurtbox_entity.gml</script>
+      <script>scripts\hurtbox_entity_can_be_hit_by.gml</script>
     </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\approach.gml</script>

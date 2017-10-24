@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>/// Initialize Enemy
 initialize_movement_entity(1, 0.5, o_solid);
+initialize_hurtbox_entity();
 
 image_speed = 0;
 
@@ -39,6 +40,30 @@ state_ = starting_state_;
 enum enemy {
     hit
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Invincible alarm
+invincible_ = false;
 </string>
           </argument>
         </arguments>
@@ -92,10 +117,15 @@ if state_ != noone {
           <argument>
             <kind>1</kind>
             <string>if health &lt;= 0 exit;
-health_ -= other.damage_;
-state_ = enemy.hit;
-var _knockback_direction = point_direction(other.x, other.y, x, y);
-set_movement(_knockback_direction, other.knockback_);
+if hurtbox_entity_can_be_hit_by(other){
+    invincible_ = true;
+    alarm[0] = room_speed / 4;
+    health_ -= other.damage_;
+    state_ = enemy.hit;
+    var _knockback_direction = point_direction(other.x, other.y, x, y);
+    set_movement(_knockback_direction, other.knockback_);
+}
+
 </string>
           </argument>
         </arguments>
