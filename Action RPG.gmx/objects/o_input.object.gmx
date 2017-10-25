@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,45 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize Enemy
-initialize_movement_entity(1, 0.5, o_solid);
-initialize_hurtbox_entity();
-
-image_speed = 0;
-
-max_health_ = 2;
-health_ = max_health_;
-
-starting_state_ = noone;
-state_ = starting_state_;
-
-enum enemy {
-    hit
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Invincible alarm
-invincible_ = false;
+            <string>GET_INPUT = 0;
+event_user(GET_INPUT);
 </string>
           </argument>
         </arguments>
@@ -86,46 +49,7 @@ invincible_ = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Enemy Step
-depth = -y;
-if health_ &lt;= 0 &amp;&amp; state_ != enemy.hit{
-    instance_destroy();
-}
-if state_ != noone {
-    event_user(state_);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="o_hitbox">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if health &lt;= 0 exit;
-if hurtbox_entity_can_be_hit_by(other){
-    invincible_ = true;
-    alarm[0] = global.one_second / 4;
-    health_ -= other.damage_;
-    state_ = enemy.hit;
-    var _knockback_direction = point_direction(other.x, other.y, x, y);
-    set_movement(_knockback_direction, other.knockback_);
-}
-
+            <string>event_user(GET_INPUT);
 </string>
           </argument>
         </arguments>
@@ -148,13 +72,14 @@ if hurtbox_entity_can_be_hit_by(other){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Hit State
-move_movement_entity(true);
-apply_friction_to_movement_entity();
+            <string>/// Get input
+right_ = keyboard_check(vk_right);
+left_ = keyboard_check(vk_left);
+up_ = keyboard_check(vk_up);
+down_ = keyboard_check(vk_down);
 
-if speed_ == 0 {
-    state_ = starting_state_;
-}
+action_one_pressed_ = keyboard_check_pressed(ord("X"));
+action_two_pressed_ = keyboard_check_pressed(ord("Z"));
 </string>
           </argument>
         </arguments>

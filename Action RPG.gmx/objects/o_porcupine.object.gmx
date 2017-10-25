@@ -99,7 +99,7 @@ if animation_hit_frame(3) {
 if animation_hit_frame(image_number - 1) {
     state_ = porcupine.idle;
     sprite_index = s_porcupine_run;
-    alarm[1] = 2 * room_speed;    
+    alarm[1] = 2 * global.one_second;    
 }
 </string>
           </argument>
@@ -139,7 +139,7 @@ if alarm[1] &lt;= 0 {
 move_movement_entity(true);
 
 if speed_ == 0 {
-    alarm[1] = random_range(1, 3) * room_speed;
+    alarm[1] = random_range(1, 3) * global.one_second;
     state_ = porcupine.idle;
 }
 
@@ -170,7 +170,7 @@ porcupine_attack();
 image_index = 0;
 
 if alarm[1] &lt;= 0 {
-    alarm[1] = random_range(2,4) * room_speed;
+    alarm[1] = random_range(2,4) * global.one_second;
     state_ = porcupine.move;
     direction_ = random(360);
 }

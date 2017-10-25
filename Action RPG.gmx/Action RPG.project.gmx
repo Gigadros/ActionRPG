@@ -58,18 +58,22 @@
     <script>scripts\animation_hit_frame.gml</script>
     <script>scripts\array.gml</script>
     <script>scripts\porcupine_attack.gml</script>
+    <script>scripts\animation_hit_frame_new.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\o_player</object>
     <object>objects\o_solid</object>
     <object>objects\o_grass</object>
     <object>objects\o_hitbox</object>
+    <object>objects\o_game</object>
+    <object>objects\o_input</object>
     <objects name="Enemies">
       <object>objects\o_enemy</object>
       <object>objects\o_porcupine</object>
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\r_init</room>
     <room>rooms\r_base</room>
   </rooms>
   <help>
