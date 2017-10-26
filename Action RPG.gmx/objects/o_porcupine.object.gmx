@@ -89,7 +89,7 @@ alarm[1] = random_range(0,1) * room_speed;
           <argument>
             <kind>1</kind>
             <string>/// Attack State
-if animation_hit_frame(3) {
+if animation_hit_frame(1) {
     var _damage = 1;
     var _knockback = 4;
     var _life = 1;

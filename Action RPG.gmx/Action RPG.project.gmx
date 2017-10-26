@@ -67,6 +67,7 @@
     <script>scripts\array.gml</script>
     <script>scripts\porcupine_attack.gml</script>
     <script>scripts\animation_hit_frame_new.gml</script>
+    <script>scripts\draw_self_flash.gml</script>
   </scripts>
   <objects name="objects">
     <objects name="Enemies">

@@ -28,6 +28,12 @@
             <string>/// Initialize the game object
 global.one_second = room_speed;
 instance_create(0, 0, o_input);
+
+global.player_max_health = 4;
+global.player_health = global.player_max_health;
+global.player_max_stamina = 2;
+global.player_stamina = global.player_max_stamina;
+global.player_gems = 0;
 </string>
           </argument>
         </arguments>
