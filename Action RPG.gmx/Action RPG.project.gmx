@@ -30,6 +30,11 @@
       <sprite>sprites\s_porcupine_run</sprite>
       <sprite>sprites\s_porcupine_attack</sprite>
     </sprites>
+    <sprites name="Effect Sprites">
+      <sprite>sprites\s_grass_effect</sprite>
+      <sprite>sprites\s_hit_effect</sprite>
+      <sprite>sprites\s_death_effect</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_grass</background>
@@ -53,6 +58,9 @@
       <script>scripts\initialize_hurtbox_entity.gml</script>
       <script>scripts\hurtbox_entity_can_be_hit_by.gml</script>
     </scripts>
+    <scripts name="Effect Scripts">
+      <script>scripts\create_animation_effect.gml</script>
+    </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\approach.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
@@ -61,16 +69,17 @@
     <script>scripts\animation_hit_frame_new.gml</script>
   </scripts>
   <objects name="objects">
+    <objects name="Enemies">
+      <object>objects\o_enemy</object>
+      <object>objects\o_porcupine</object>
+    </objects>
     <object>objects\o_player</object>
     <object>objects\o_solid</object>
     <object>objects\o_grass</object>
     <object>objects\o_hitbox</object>
     <object>objects\o_game</object>
     <object>objects\o_input</object>
-    <objects name="Enemies">
-      <object>objects\o_enemy</object>
-      <object>objects\o_porcupine</object>
-    </objects>
+    <object>objects\o_animation_effect</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
