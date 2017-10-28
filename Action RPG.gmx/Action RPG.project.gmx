@@ -4,7 +4,13 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\a_hit</sound>
+    <sound>sound\a_swipe</sound>
+    <sound>sound\a_hurt</sound>
+    <sound>sound\a_porcupine_attack</sound>
+    <sound>sound\a_music</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="Player Sprites">
       <sprite>sprites\s_player_run_right</sprite>

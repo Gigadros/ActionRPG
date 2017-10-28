@@ -161,6 +161,7 @@ if hurtbox_entity_can_be_hit_by(other){
     var _direction = point_direction(other.x, other.y, x, y);
     set_movement(_direction, other.knockback_);
     state_ = player.hit;
+    audio_play_sound(a_hurt, 6, false);
 }
 </string>
           </argument>
@@ -255,6 +256,7 @@ if animation_hit_frame(1){
     var _damage = 1;
     var _knockback = 8;
     var _hitbox = create_hitbox(s_sword_hitbox, x, y, _angle, _life, array(o_enemy, o_grass), _damage, _knockback);
+    audio_play_sound(a_swipe, 8, false);
     
     switch direction_facing_ {
         case dir.up: _hitbox.y -= 4; break;
