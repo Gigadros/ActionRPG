@@ -82,6 +82,7 @@
     <instance objName="o_grass" x="272" y="48" name="inst_C759486C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_porcupine" x="160" y="112" name="inst_719444B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_porcupine" x="272" y="144" name="inst_94CE11FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_camera" x="0" y="0" name="inst_39442900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="t_dirtpath" x="32" y="0" w="16" h="16" xo="16" yo="0" id="10000054" name="inst_BDA53B50" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

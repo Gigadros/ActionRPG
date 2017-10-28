@@ -61,8 +61,11 @@
     <scripts name="Effect Scripts">
       <script>scripts\create_animation_effect.gml</script>
     </scripts>
+    <scripts name="Helper Scripts">
+      <script>scripts\approach.gml</script>
+      <script>scripts\round_n.gml</script>
+    </scripts>
     <script>scripts\get_direction_facing.gml</script>
-    <script>scripts\approach.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
     <script>scripts\array.gml</script>
     <script>scripts\porcupine_attack.gml</script>
@@ -81,6 +84,7 @@
     <object>objects\o_game</object>
     <object>objects\o_input</object>
     <object>objects\o_animation_effect</object>
+    <object>objects\o_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
