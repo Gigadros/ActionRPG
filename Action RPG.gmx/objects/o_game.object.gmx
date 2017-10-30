@@ -34,8 +34,43 @@ global.player_health = global.player_max_health;
 global.player_max_stamina = 2;
 global.player_stamina = global.player_max_stamina;
 global.player_gems = 0;
+global.player_start_position = i_game_start;
 
 audio_play_sound(a_music, 10, false);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if instance_exists(global.player_start_position){
+    if instance_exists(o_player) {
+        o_player.persistent = false;
+        o_player.x = global.player_start_position.x;
+        o_player.y = global.player_start_position.y;
+    } else {
+        var _start_x = global.player_start_position.x;
+        var _start_y = global.player_start_position.y;
+        instance_create(_start_x, _start_y, o_player);
+    }
+    global.player_start_position = noone;
+}
 </string>
           </argument>
         </arguments>

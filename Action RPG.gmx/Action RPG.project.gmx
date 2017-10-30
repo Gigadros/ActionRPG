@@ -31,6 +31,8 @@
       <sprite>sprites\s_bomb_hitbox</sprite>
       <sprite>sprites\s_sword_hitbox</sprite>
       <sprite>sprites\s_porcupine_hitbox</sprite>
+      <sprite>sprites\s_start_position</sprite>
+      <sprite>sprites\s_door</sprite>
     </sprites>
     <sprites name="Enemy Sprites">
       <sprite>sprites\s_porcupine_run</sprite>
@@ -91,10 +93,13 @@
     <object>objects\o_input</object>
     <object>objects\o_animation_effect</object>
     <object>objects\o_camera</object>
+    <object>objects\o_start_position</object>
+    <object>objects\o_door</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
-    <room>rooms\r_base</room>
+    <room>rooms\r_world</room>
+    <room>rooms\r_sword</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

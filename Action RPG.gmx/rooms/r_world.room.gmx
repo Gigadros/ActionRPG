@@ -51,14 +51,13 @@
     <view visible="0" objName="&lt;undefined&gt;" xview="0" yview="0" wview="1024" hview="768" xport="0" yport="0" wport="1024" hport="768" hborder="32" vborder="32" hspeed="-1" vspeed="-1"/>
   </views>
   <instances>
-    <instance objName="o_player" x="96" y="64" name="inst_965B9129" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="288" y="16" name="inst_F065433C" locked="0" code="" scaleX="1" scaleY="7" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="16" y="0" name="inst_D224F651" locked="0" code="" scaleX="1" scaleY="9" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="64" y="16" name="inst_A17F97D6" locked="0" code="" scaleX="15" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_solid" x="80" y="160" name="inst_DB711747" locked="0" code="" scaleX="15" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_solid" x="80" y="160" name="inst_DB711747" locked="0" code="" scaleX="16" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="32" y="128" name="inst_37B1D07D" locked="0" code="" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="80" y="144" name="inst_89D1B105" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="o_solid" x="304" y="112" name="inst_8331511F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_solid" x="304" y="112" name="inst_8331511F" locked="0" code="" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="64" y="0" name="inst_CF485185" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_solid" x="192" y="64" name="inst_BB215145" locked="0" code="" scaleX="4" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="o_grass" x="96" y="32" name="inst_A08B5037" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -83,6 +82,9 @@
     <instance objName="o_porcupine" x="160" y="112" name="inst_719444B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_porcupine" x="272" y="144" name="inst_94CE11FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="o_camera" x="0" y="0" name="inst_39442900" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_door" x="336" y="128" name="inst_C3C1C92F" locked="0" code="room_ = r_sword;&#xA;start_ = i_world_to_sword;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="o_start_position" x="320" y="144" name="i_sword_to_world" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="o_start_position" x="96" y="64" name="i_game_start" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="t_dirtpath" x="32" y="0" w="16" h="16" xo="16" yo="0" id="10000054" name="inst_BDA53B50" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

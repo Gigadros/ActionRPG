@@ -136,6 +136,31 @@ if global.player_health &lt;= 0 and not invincible_ {
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="o_door">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.player_start_position = other.start_;
+persistent = true;
+room_goto(other.room_);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="o_hitbox">
       <action>
         <libid>1</libid>
