@@ -25,21 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initialize Enemy
-initialize_movement_entity(1, 0.5, o_solid);
-initialize_hurtbox_entity();
-
-image_speed = 0;
-
-max_health_ = 2;
-health_ = max_health_;
-
-starting_state_ = noone;
-state_ = starting_state_;
-
-enum enemy {
-    hit
-}
+            <string>PICKED_UP = 0;
+depth = -y;
+z_ = 0;
+z_speed_ = -4;
+gravity_ = 0.25;
+can_pickup_ = false;
+audio_play_sound(a_item, 2, false);
 </string>
           </argument>
         </arguments>
@@ -62,35 +54,7 @@ enum enemy {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>create_animation_effect(s_death_effect, x, y-8, 0.2, true);
-if chance(0.75) {
-    var _item = choose(o_gem_pickup, o_heart_pickup);
-    instance_create(x, y-8, _item);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Invincible alarm
-invincible_ = false;
+            <string>create_animation_effect(s_gem_shine_effect, x, y-8, 0.33, false);
 </string>
           </argument>
         </arguments>
@@ -113,20 +77,24 @@ invincible_ = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Enemy Step
-depth = -y;
-if health_ &lt;= 0 &amp;&amp; state_ != enemy.hit{
-    instance_destroy();
-}
-if state_ != noone {
-    event_user(state_);
+            <string>z_ += z_speed_;
+z_speed_ += gravity_;
+if z_ &gt;= 0 {
+    can_pickup_ = true;
+    var _bounce_amount = 0.25;
+    z_speed_ = -z_speed_ * _bounce_amount;
+    
+    if z_speed_ &gt; -1 {
+        z_speed_ = 0;
+        z_ = 0;
+    }
 }
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="o_hitbox">
+    <event eventtype="4" ename="o_player">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -143,47 +111,8 @@ if state_ != noone {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if health &lt;= 0 exit;
-if hurtbox_entity_can_be_hit_by(other){
-    invincible_ = true;
-    alarm[0] = global.one_second / 3;
-    health_ -= other.damage_;
-    state_ = enemy.hit;
-    var _knockback_direction = point_direction(other.x, other.y, x, y);
-    set_movement(_knockback_direction, other.knockback_);
-    create_animation_effect(s_hit_effect, x, y-8, 0.33, true);
-    audio_play_sound(a_hit, 7, false);
-}
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="10">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Hit State
-move_movement_entity(true);
-apply_friction_to_movement_entity();
-
-if speed_ == 0 {
-    state_ = starting_state_;
-}
+            <string>if not can_pickup_ exit;
+event_user(PICKED_UP);
 </string>
           </argument>
         </arguments>
@@ -206,8 +135,7 @@ if speed_ == 0 {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self();
-draw_self_flash(c_white, 12, alarm[0]);
+            <string>draw_sprite(sprite_index, image_index, x, y+z_);
 </string>
           </argument>
         </arguments>

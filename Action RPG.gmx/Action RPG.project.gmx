@@ -10,6 +10,8 @@
     <sound>sound\a_hurt</sound>
     <sound>sound\a_porcupine_attack</sound>
     <sound>sound\a_music</sound>
+    <sound>sound\a_item</sound>
+    <sound>sound\a_collect_item</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player Sprites">
@@ -42,6 +44,15 @@
       <sprite>sprites\s_grass_effect</sprite>
       <sprite>sprites\s_hit_effect</sprite>
       <sprite>sprites\s_death_effect</sprite>
+      <sprite>sprites\s_gem_shine_effect</sprite>
+    </sprites>
+    <sprites name="Item Sprites">
+      <sprite>sprites\s_gem</sprite>
+      <sprite>sprites\s_heart</sprite>
+    </sprites>
+    <sprites name="Misc Sprites">
+      <sprite>sprites\s_medium_shadow</sprite>
+      <sprite>sprites\s_small_shadow</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -72,6 +83,7 @@
     <scripts name="Helper Scripts">
       <script>scripts\approach.gml</script>
       <script>scripts\round_n.gml</script>
+      <script>scripts\chance.gml</script>
     </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
@@ -95,6 +107,9 @@
     <object>objects\o_camera</object>
     <object>objects\o_start_position</object>
     <object>objects\o_door</object>
+    <object>objects\o_pickup</object>
+    <object>objects\o_gem_pickup</object>
+    <object>objects\o_heart_pickup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
