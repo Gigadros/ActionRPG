@@ -29,7 +29,11 @@
 global.one_second = room_speed;
 instance_create(0, 0, o_input);
 
-global.player_max_health = 4;
+var _font_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.abcdefghijklmnopqrstuvwxyz1234567890&gt;,!':-+";
+global.font = font_add_sprite_ext(s_font, _font_string, true, 1);
+draw_set_font(global.font);
+
+global.player_max_health = 3;
 global.player_health = global.player_max_health;
 global.player_max_stamina = 2;
 global.player_stamina = global.player_max_stamina;
@@ -37,6 +41,8 @@ global.player_gems = 0;
 global.player_start_position = i_game_start;
 
 audio_play_sound(a_music, 10, false);
+
+display_set_gui_size(view_wview[0], view_hview[0]);
 </string>
           </argument>
         </arguments>
@@ -96,6 +102,47 @@ audio_play_sound(a_music, 10, false);
           <argument>
             <kind>1</kind>
             <string>room_goto_next();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+var _gui_width = display_get_gui_width();
+var _gui_height = display_get_gui_height();
+
+var _hud_right_edge = 3+global.player_max_health*15;
+draw_sprite_ext(s_hud, 0, 0, _gui_height, _hud_right_edge, 1, 0, c_white, 1);
+draw_sprite(s_hud_edge, 0, _hud_right_edge, _gui_height);
+
+for (var _i=0; _i&lt;global.player_max_health; _i++) {
+    var _filled = _i &lt; global.player_health;
+    draw_sprite(s_heart_ui, _filled, 4+15*_i, _gui_height-29);
+}
+
+var _gem_string = string(global.player_gems);
+var _text_width = string_width(_gem_string);
+var _x = _gui_width - _text_width+4;
+var _y = _gui_height - 16 + 4;
+draw_sprite(s_gem, 0, _x-16, _y+7);
+draw_text(_x-8, _y-1, _gem_string);
 </string>
           </argument>
         </arguments>

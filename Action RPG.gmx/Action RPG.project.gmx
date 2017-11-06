@@ -53,6 +53,12 @@
     <sprites name="Misc Sprites">
       <sprite>sprites\s_medium_shadow</sprite>
       <sprite>sprites\s_small_shadow</sprite>
+      <sprite>sprites\s_font</sprite>
+    </sprites>
+    <sprites name="UI Sprites">
+      <sprite>sprites\s_heart_ui</sprite>
+      <sprite>sprites\s_hud</sprite>
+      <sprite>sprites\s_hud_edge</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
