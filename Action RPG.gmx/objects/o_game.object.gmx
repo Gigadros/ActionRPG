@@ -43,6 +43,48 @@ global.player_start_position = i_game_start;
 audio_play_sound(a_music, 10, false);
 
 display_set_gui_size(view_wview[0], view_hview[0]);
+
+paused_ = false;
+paused_sprite_ = noone;
+paused_sprite_scale_ = display_get_gui_width() / view_wport[0];
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if o_input.pause_pressed_ {
+    if paused_ {
+        paused_ = false;
+        if sprite_exists(paused_sprite_) {
+            sprite_delete(paused_sprite_);
+        }
+        instance_activate_all();
+        audio_play_sound(a_unpause, 5, false);
+    } else {
+        paused_ = true;
+        paused_sprite_ = sprite_create_from_surface(application_surface, 0, 0, view_wport[0], view_hport[0], false, false, 0, 0);
+        instance_deactivate_all(true);
+        instance_activate_object(o_input);
+        audio_play_sound(a_pause, 5, false);
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -127,6 +169,13 @@ display_set_gui_size(view_wview[0], view_hview[0]);
             <string>
 var _gui_width = display_get_gui_width();
 var _gui_height = display_get_gui_height();
+
+if sprite_exists(paused_sprite_) {
+    draw_sprite_ext(paused_sprite_, 0, 0, 0, paused_sprite_scale_, paused_sprite_scale_, 0, c_white, 1);
+    draw_set_alpha(0.6);
+    draw_rectangle_color(0, 0, _gui_width, _gui_height, c_black, c_black, c_black, c_black, false);
+    draw_set_alpha(1);
+}
 
 var _hud_right_edge = 3+global.player_max_health*15;
 draw_sprite_ext(s_hud, 0, 0, _gui_height, _hud_right_edge, 1, 0, c_white, 1);

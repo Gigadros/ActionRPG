@@ -12,6 +12,8 @@
     <sound>sound\a_music</sound>
     <sound>sound\a_item</sound>
     <sound>sound\a_collect_item</sound>
+    <sound>sound\a_pause</sound>
+    <sound>sound\a_unpause</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player Sprites">
