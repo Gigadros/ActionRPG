@@ -47,6 +47,11 @@ display_set_gui_size(view_wview[0], view_hview[0]);
 paused_ = false;
 paused_sprite_ = noone;
 paused_sprite_scale_ = display_get_gui_width() / view_wport[0];
+
+inventory_create(6);
+inventory_add_item(o_ring_item);
+inventory_add_item(o_sword_item);
+inventory_add_item(o_bomb_item);
 </string>
           </argument>
         </arguments>
@@ -81,6 +86,10 @@ paused_sprite_scale_ = display_get_gui_width() / view_wport[0];
         paused_ = true;
         paused_sprite_ = sprite_create_from_surface(application_surface, 0, 0, view_wport[0], view_hport[0], false, false, 0, 0);
         instance_deactivate_all(true);
+        var _array_size = array_length_1d(global.inventory);
+        for (var _i = 0; _i &lt; _array_size; _i++) {
+            instance_activate_object(global.inventory[_i]);
+        }
         instance_activate_object(o_input);
         audio_play_sound(a_pause, 5, false);
     }
@@ -192,6 +201,8 @@ var _x = _gui_width - _text_width+4;
 var _y = _gui_height - 16 + 4;
 draw_sprite(s_gem, 0, _x-16, _y+7);
 draw_text(_x-8, _y-1, _gem_string);
+
+inventory_draw(4, 36);
 </string>
           </argument>
         </arguments>

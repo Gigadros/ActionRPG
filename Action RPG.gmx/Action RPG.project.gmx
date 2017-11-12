@@ -51,6 +51,9 @@
     <sprites name="Item Sprites">
       <sprite>sprites\s_gem</sprite>
       <sprite>sprites\s_heart</sprite>
+      <sprite>sprites\s_ring_item</sprite>
+      <sprite>sprites\s_sword_item</sprite>
+      <sprite>sprites\s_bomb_item</sprite>
     </sprites>
     <sprites name="Misc Sprites">
       <sprite>sprites\s_medium_shadow</sprite>
@@ -61,6 +64,7 @@
       <sprite>sprites\s_heart_ui</sprite>
       <sprite>sprites\s_hud</sprite>
       <sprite>sprites\s_hud_edge</sprite>
+      <sprite>sprites\s_inventory_box</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -92,6 +96,13 @@
       <script>scripts\approach.gml</script>
       <script>scripts\round_n.gml</script>
       <script>scripts\chance.gml</script>
+      <script>scripts\array_find_index.gml</script>
+      <script>scripts\singleton.gml</script>
+    </scripts>
+    <scripts name="Inventory Scripts">
+      <script>scripts\inventory_create.gml</script>
+      <script>scripts\inventory_add_item.gml</script>
+      <script>scripts\inventory_draw.gml</script>
     </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
@@ -105,19 +116,29 @@
       <object>objects\o_enemy</object>
       <object>objects\o_porcupine</object>
     </objects>
+    <objects name="Collisions">
+      <object>objects\o_solid</object>
+      <object>objects\o_hitbox</object>
+      <object>objects\o_start_position</object>
+      <object>objects\o_door</object>
+    </objects>
+    <objects name="Items">
+      <object>objects\o_pickup</object>
+      <object>objects\o_heart_pickup</object>
+      <object>objects\o_gem_pickup</object>
+      <objects name="Inventory">
+        <object>objects\o_inventory_item</object>
+        <object>objects\o_ring_item</object>
+        <object>objects\o_sword_item</object>
+        <object>objects\o_bomb_item</object>
+      </objects>
+    </objects>
     <object>objects\o_player</object>
-    <object>objects\o_solid</object>
     <object>objects\o_grass</object>
-    <object>objects\o_hitbox</object>
     <object>objects\o_game</object>
     <object>objects\o_input</object>
     <object>objects\o_animation_effect</object>
     <object>objects\o_camera</object>
-    <object>objects\o_start_position</object>
-    <object>objects\o_door</object>
-    <object>objects\o_pickup</object>
-    <object>objects\o_gem_pickup</object>
-    <object>objects\o_heart_pickup</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\r_init</room>
