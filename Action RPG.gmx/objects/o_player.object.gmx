@@ -73,6 +73,11 @@ sprite_[player.evade, dir.up] = s_player_roll_up;
 sprite_[player.evade, dir.left] = s_player_roll_right;
 sprite_[player.evade, dir.down] = s_player_roll_down;
 
+sprite_[player.bomb, dir.right] = s_player_run_right;
+sprite_[player.bomb, dir.up] = s_player_run_up;
+sprite_[player.bomb, dir.left] = s_player_run_right;
+sprite_[player.bomb, dir.down] = s_player_run_down;
+
 sprite_[player.hit, dir.right] = s_player_run_right;
 sprite_[player.hit, dir.up] = s_player_run_up;
 sprite_[player.hit, dir.left] = s_player_run_right;
@@ -224,6 +229,32 @@ if speed_ == 0 {
         </arguments>
       </action>
     </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Bomb State
+instance_create(x, y+2, o_bomb);
+audio_play_sound(a_set_bomb, 5, false);
+state_ = player.move;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="7" enumb="12">
       <action>
         <libid>1</libid>
@@ -319,8 +350,6 @@ image_speed = 0;
 var _x_input = o_input.right_ - o_input.left_;
 var _y_input = o_input.down_ - o_input.up_;
 var _input_direction = point_direction(0, 0, _x_input, _y_input);
-var _attack_input = o_input.action_one_pressed_;
-var _roll_input = o_input.action_two_pressed_;
 roll_direction_ = direction_facing_ * 90;
 
 if _x_input == 0 and _y_input == 0 {
@@ -337,14 +366,8 @@ if _x_input == 0 and _y_input == 0 {
     roll_direction_ = _input_direction;
 }
 
-if _attack_input == true {
-    image_index = 0;
-    state_ = player.sword;
-}
-if _roll_input == true {
-    image_index = 0;
-    state_ = player.evade;
-}
+inventory_use_item(o_input.action_one_pressed_, global.item[0]);
+inventory_use_item(o_input.action_two_pressed_, global.item[1]);
 
 move_movement_entity(false);
 </string>

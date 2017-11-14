@@ -14,6 +14,10 @@
     <sound>sound\a_collect_item</sound>
     <sound>sound\a_pause</sound>
     <sound>sound\a_unpause</sound>
+    <sound>sound\a_menu_move</sound>
+    <sound>sound\a_menu_select</sound>
+    <sound>sound\a_explosion</sound>
+    <sound>sound\a_set_bomb</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Player Sprites">
@@ -26,6 +30,7 @@
       <sprite>sprites\s_player_roll_right</sprite>
       <sprite>sprites\s_player_roll_up</sprite>
       <sprite>sprites\s_player_roll_down</sprite>
+      <sprite>sprites\sprite35</sprite>
     </sprites>
     <sprites name="World Sprites">
       <sprite>sprites\s_grass</sprite>
@@ -47,6 +52,7 @@
       <sprite>sprites\s_hit_effect</sprite>
       <sprite>sprites\s_death_effect</sprite>
       <sprite>sprites\s_gem_shine_effect</sprite>
+      <sprite>sprites\s_explosion_effect</sprite>
     </sprites>
     <sprites name="Item Sprites">
       <sprite>sprites\s_gem</sprite>
@@ -54,6 +60,7 @@
       <sprite>sprites\s_ring_item</sprite>
       <sprite>sprites\s_sword_item</sprite>
       <sprite>sprites\s_bomb_item</sprite>
+      <sprite>sprites\s_bomb</sprite>
     </sprites>
     <sprites name="Misc Sprites">
       <sprite>sprites\s_medium_shadow</sprite>
@@ -65,6 +72,7 @@
       <sprite>sprites\s_hud</sprite>
       <sprite>sprites\s_hud_edge</sprite>
       <sprite>sprites\s_inventory_box</sprite>
+      <sprite>sprites\s_pause_cursor</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -103,6 +111,7 @@
       <script>scripts\inventory_create.gml</script>
       <script>scripts\inventory_add_item.gml</script>
       <script>scripts\inventory_draw.gml</script>
+      <script>scripts\inventory_use_item.gml</script>
     </scripts>
     <script>scripts\get_direction_facing.gml</script>
     <script>scripts\animation_hit_frame.gml</script>
@@ -132,6 +141,7 @@
         <object>objects\o_sword_item</object>
         <object>objects\o_bomb_item</object>
       </objects>
+      <object>objects\o_bomb</object>
     </objects>
     <object>objects\o_player</object>
     <object>objects\o_grass</object>
