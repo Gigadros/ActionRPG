@@ -33,9 +33,9 @@ var _font_string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.abcdefghijklmnopqrstuvwxyz1234567
 global.font = font_add_sprite_ext(s_font, _font_string, true, 1);
 draw_set_font(global.font);
 
-global.player_max_health = 3;
+global.player_max_health = 4;
 global.player_health = global.player_max_health;
-global.player_max_stamina = 2;
+global.player_max_stamina = 3;
 global.player_stamina = global.player_max_stamina;
 global.player_gems = 0;
 global.player_start_position = i_game_start;
@@ -211,13 +211,18 @@ if sprite_exists(paused_sprite_) {
     draw_set_alpha(1);
 }
 
-var _hud_right_edge = 3+global.player_max_health*15;
+var _hud_right_edge = max(3+global.player_max_health*15, 2+global.player_max_stamina*17);
 draw_sprite_ext(s_hud, 0, 0, _gui_height, _hud_right_edge, 1, 0, c_white, 1);
 draw_sprite(s_hud_edge, 0, _hud_right_edge, _gui_height);
 
 for (var _i=0; _i&lt;global.player_max_health; _i++) {
     var _filled = _i &lt; global.player_health;
     draw_sprite(s_heart_ui, _filled, 4+15*_i, _gui_height-29);
+}
+
+for (var _i=0; _i&lt;global.player_max_stamina; _i++) {
+    var _filled = _i &lt; global.player_stamina;
+    draw_sprite(s_stamina_ui, _filled, 4+17*_i, _gui_height-17);
 }
 
 var _gem_string = string(global.player_gems);
